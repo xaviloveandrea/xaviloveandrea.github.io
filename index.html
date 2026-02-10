@@ -3,61 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <title>¿Quieres ser mi San Valentín? 💘</title>
+
   <style>
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-family: 'Arial', sans-serif;
-      color: white;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      overflow: hidden;
     }
+
+    /* Fotos de fondo */
+    .bg-photo {
+      position: fixed;
+      width: 40%;
+      height: 80%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+      filter: blur(2px);
+    }
+
+    .bg-left {
+      left: 0;
+      top: 10%;
+      background-image: url('foto1.jpg');
+    }
+
+    .bg-right {
+      right: 0;
+      top: 10%;
+      background-image: url('foto2.jpg');
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
     .card {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
       padding: 35px;
       border-radius: 25px;
-      text-align: center;
       max-width: 420px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      color: white;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     }
+
     h1 {
       margin-bottom: 10px;
     }
+
     p {
       font-size: 18px;
     }
+
     button {
-      margin-top: 20px;
-      padding: 15px 28px;
+      margin: 15px;
+      padding: 14px 26px;
       font-size: 18px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
       transition: transform 0.2s;
     }
+
     .yes {
       background: #ff2e63;
       color: white;
     }
+
     .yes:hover {
       transform: scale(1.1);
     }
+
+    .no {
+      background: #ffffff;
+      color: #ff2e63;
+    }
+
+    /* Modal NO */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 320px;
+    }
+
+    .modal-content img {
+      width: 180px;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      color: #333;
+      font-size: 16px;
+    }
   </style>
 </head>
-<body>
-  <div class="card">
-    <h1>💖 Andrea 💖</h1>
-    <p>
-      Desde que llegaste a mi vida, todo es más bonito.<br><br>
-      Hoy quiero preguntarte algo muy importante…
-    </p>
-    <h2>¿Quieres ser mi San Valentín? 💘</h2>
 
-    <button class="yes" onclick="alert('Sabía que dirías que sí 😍💞')">
-      Sí, quiero 💕
-    </button>
+<body>
+
+  <!-- Fondos -->
+  <div class="bg-photo bg-left"></div>
+  <div class="bg-photo bg-right"></div>
+
+  <div class="container">
+    <div class="card">
+      <h1>💖 Andrea 💖</h1>
+      <p>
+        Desde que llegaste a mi vida,<br>
+        todo es más bonito.<br><br>
+        Y hoy quiero preguntarte algo muy importante…
+      </p>
+
+      <h2>¿Quieres ser mi San Valentín? 💘</h2>
+
+      <button class="yes" onclick="alert('Sabía que dirías que sí 😍💞')">
+        Sí, quiero 💕
+      </button>
+
+      <button class="no" onclick="showModal()">
+        No 😅
+      </button>
+    </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <img src="caricatura.png" alt="Caricatura de Xavi">
+      <p>
+        Amor… elegiste mal 😌<br><br>
+        Seguro se te cayeron los lentes 👓<br>
+        Búscalos y vuelve a elegir 💖
+      </p>
+      <button class="yes" onclick="closeModal()">Volver 💕</button>
+    </div>
+  </div>
+
+  <script>
+    function showModal() {
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
