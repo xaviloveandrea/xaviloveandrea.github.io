@@ -88,7 +88,7 @@
       color: #ff2e63;
     }
 
-    /* Modal NO */
+    /* Modal */
     .modal {
       position: fixed;
       inset: 0;
@@ -104,17 +104,29 @@
       padding: 25px;
       border-radius: 20px;
       text-align: center;
-      max-width: 320px;
+      max-width: 340px;
+      animation: aparecer 0.6s ease;
     }
 
     .modal-content img {
-      width: 180px;
+      width: 200px;
       margin-bottom: 15px;
     }
 
     .modal-content p {
       color: #333;
       font-size: 16px;
+    }
+
+    @keyframes aparecer {
+      from {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -136,18 +148,30 @@
 
       <h2>¿Quieres ser mi San Valentín? 💘</h2>
 
-      <button class="yes" onclick="alert('Sabía que dirías que sí 😍💞 TE AMO')">
+      <button class="yes" onclick="showYes()">
         Sí, quiero 💕
       </button>
 
-      <button class="no" onclick="showModal()">
+      <button class="no" onclick="showNo()">
         No 😅
       </button>
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal" id="modal">
+  <!-- Modal SÍ -->
+  <div class="modal" id="modalYes">
+    <div class="modal-content">
+      <img src="caricatura1.png" alt="Caricatura de Xavi">
+      <p>
+        Sabía que dirías que sí, te amo ❤️<br><br>
+        Te esperará un maravilloso 14 de febrero ✨
+      </p>
+      <button class="yes" onclick="closeYes()">Te amo 💖</button>
+    </div>
+  </div>
+
+  <!-- Modal NO -->
+  <div class="modal" id="modalNo">
     <div class="modal-content">
       <img src="caricatura.png" alt="Caricatura de Xavi">
       <p>
@@ -155,19 +179,28 @@
         Seguro se te cayeron los lentes 👓<br>
         Búscalos y vuelve a elegir 💖
       </p>
-      <button class="yes" onclick="closeModal()">Volver 💕</button>
+      <button class="yes" onclick="closeNo()">Volver 💕</button>
     </div>
   </div>
 
   <script>
-    function showModal() {
-      document.getElementById('modal').style.display = 'flex';
+    function showYes() {
+      document.getElementById('modalYes').style.display = 'flex';
     }
 
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
+    function closeYes() {
+      document.getElementById('modalYes').style.display = 'none';
+    }
+
+    function showNo() {
+      document.getElementById('modalNo').style.display = 'flex';
+    }
+
+    function closeNo() {
+      document.getElementById('modalNo').style.display = 'none';
     }
   </script>
 
 </body>
 </html>
+
